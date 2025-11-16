@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Twój Serwisant - Serwis komputerowy Wrocław</title>
+    <link rel="icon" href="Logo.jpg" type="image/jpeg" />
+    <style>
+      /* Основные стили для минималистичного дизайна */
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        background: #f9fafb;
+        color: #333;
+        line-height: 1.5;
+      }
+      header {
+        background: #254e70;
+        color: white;
+        padding: 20px 10px;
+        text-align: center;
+      }
+      header img {
+        max-width: 85px;
+        border-radius: 15px;
+        margin-bottom: 10px;
+      }
+      header h1 {
+        font-size: 2.0em;
+        margin: 0 0 4px 0;
+        font-weight: 700;
+      }
+      header p {
+        margin: 0;
+        font-weight: 400;
+        font-size: 1.1em;
+        color: #fffce0;
+      }
+      nav {
+        background: white;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        padding: 15px 0;
+        border-bottom: 1px solid #ddd;
+      }
+      nav a {
+        color: #254e70;
+        text-decoration: none;
+        font-weight: 600;
+        padding: 10px 18px;
+        border-radius: 25px;
+        transition: all 0.2s ease-in-out;
+      }
+      nav a:hover {
+        background: #ffd600;
+        color: #254e70;
+        text-decoration: none;
+      }
+      .call-btn {
+        background: #254e70;
+        color: white;
+        font-weight: bold;
+        border-radius: 25px;
+        padding: 9px 22px;
+        font-size: 20px;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.2s ease;
+      }
+      .call-btn:hover {
+        background: #ffd600;
+        color: #254e70;
+      }
+      .section {
+        background: white;
+        margin: 40px auto;
+        padding: 30px 25px;
+        border-radius: 16px;
+        max-width: 900px;
+        box-shadow: 0 3px 10px rgba(55, 65, 81, 0.08);
+      }
+      h2, h3 {
+        color: #254e70;
+        margin-top: 0;
+        font-weight: 700;
+      }
+      .about-block {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+        align-items: center;
+      }
+      .about-block img {
+        width: 220px;
+        border-radius: 12px;
+        box-shadow: 0 6px 22px rgba(44, 62, 80, 0.12);
+      }
+      .about-info {
+        flex: 1;
+        min-width: 240px;
+      }
+      ul {
+        list-style: none;
+        padding-left: 0;
+      }
+      li {
+        margin-bottom: 10px;
+        background: #f8fafc;
+        padding: 8px 12px;
+        border-radius: 6px;
+        transition: box-shadow 0.2s ease;
+      }
+      li:hover {
+        box-shadow: 0 2px 10px #ddd;
+      }
+      button#togglePhotosBtn {
+        width: 100%;
+        max-width: 400px;
+        padding: 12px 0;
+        border: none;
+        background: #254e70;
+        color: white;
+        font-size: 1.2em;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: background 0.2s ease;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      button#togglePhotosBtn:hover {
+        background: #ffd600;
+        color: #254e70;
+      }
+      #photoDropdown {
+        margin-top: 18px;
+        list-style: none;
+        padding: 0;
+        max-width: 440px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      #photoDropdown li {
+        margin-bottom: 22px;
+        text-align: center;
+      }
+      #photoDropdown img {
+        border-radius: 10px;
+        box-shadow: 0 3px 14px rgba(0, 0, 0, 0.1);
+        max-width: 100%;
+        height: auto;
+      }
+      #photoDropdown div {
+        padding-top: 6px;
+        font-size: 1em;
+        color: #333;
+      }
+      details {
+        border: none;
+        border-radius: 8px;
+        overflow: hidden;
+        background: white;
+        padding: 0;
+        box-shadow: 0 2px 8px #ddd;
+        margin-bottom: 20px;
+      }
+      summary {
+        background: #254e70;
+        color: white;
+        padding: 12px 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.2s ease;
+        user-select: none;
+      }
+      summary:hover {
+        background: #ffd600;
+        color: #254e70;
+      }
+      details[open] > summary {
+        border-bottom: 1px solid #ccd6df;
+      }
+      details ul {
+        margin: 0;
+        padding: 16px;
+        list-style: none;
+        background: #f8fafc;
+      }
+      details ul li {
+        padding: 6px 10px;
+        margin-bottom: 8px;
+        background: white;
+        border-radius: 6px;
+        transition: box-shadow 0.2s ease;
+      }
+      details ul li:hover {
+        box-shadow: 0 2px 8px #ddd;
+      }
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        margin-top: 12px;
+        max-width: 400px;
+      }
+      .contact-form input,
+      .contact-form textarea {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 12px;
+        border: 1px solid #ccd6df;
+        border-radius: 7px;
+        font-size: 1em;
+        transition: box-shadow 0.2s ease;
+      }
+      .contact-form input:focus,
+      .contact-form textarea:focus {
+        box-shadow: 0 0 6px #254e70;
+        outline: none;
+        border-color: #254e70;
+      }
+      .contact-form button {
+        background-color: #254e70;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        font-weight: 700;
+        padding: 12px;
+        font-size: 1.1em;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+      }
+      .contact-form button:hover {
+        background-color: #ffd600;
+        color: #254e70;
+      }
+      .map {
+        width: 100%;
+        height: 260px;
+        border-radius: 13px;
+        border: 1px solid #eee;
+        margin-top: 18px;
+        box-shadow: 0 2px 8px #dce1e6;
+      }
+      footer {
+        text-align: center;
+        padding: 32px 10px 18px 10px;
+        background: #254e70;
+        color: white;
+        font-size: 0.98em;
+        margin-top: 30px;
+      }
+      footer .footer-contacts {
+        margin-top: 10px;
+      }
+      footer a {
+        color: #ffd600;
+        text-decoration: none;
+      }
+      footer a:hover {
+        text-decoration: underline;
+      }
+
+      /* Адаптив */
+      @media (max-width: 700px) {
+        header h1 {
+          font-size: 1.8em;
+        }
+        nav {
+          flex-wrap: nowrap;
+          overflow-x: auto;
+          gap: 10px;
+          padding: 14px 10px;
+        }
+        nav a {
+          padding: 8px 10px;
+          white-space: nowrap;
+          font-size: 0.9em;
+        }
+        .about-block {
+          flex-direction: column;
+          align-items: center;
+          gap: 12px;
+        }
+        .about-block img {
+          width: 150px;
+          max-width: 90vw;
+        }
+        .contact-form {
+          max-width: 90vw;
+          padding: 0 10px;
+        }
+        .map {
+          height: 220px;
+        }
+      }
+    </style>
+</head>
+<body>
+  <header>
+    <img src="Logo.jpg" alt="Logo" class="logo">
+    <h1>Twój Serwisant</h1>
+    <p>Profesjonalny serwis komputerowy we Wrocławiu (ul. Pobożnego 8/1A)</p>
+    <div style="margin: 30px auto 20px auto; padding: 18px 22px; border-radius: 10px; background: #fffbe9; box-shadow: 0 2px 6px rgba(37, 78, 112, 0.1); max-width: 430px; color: #254e70; text-align: center; font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;">
+      <div style="font-weight: 700; font-size: 1.15em; margin-bottom: 12px;">Godziny otwarcia</div>
+
+      <div style="margin-bottom: 8px;">
+        <span style="font-weight: 600;">Pon. – Pt.:</span> 10:00 – 18:00
+      </div>
+
+      <div style="margin-bottom: 8px;">
+        <span style="font-weight: 600;">Sobota:</span> 10:00 – 14:00
+      </div>
+
+      <div>
+        <span style="font-weight: 600;">Niedziela:</span> nieczynne
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <a href="#about">O mnie</a>
+    <a href="#services">Usługi</a>
+    <a href="#contact">Kontakt</a>
+    <a class="call-btn" href="tel:+48733655689">📞</a>
+  </nav>
+
+  <section id="about" class="section">
+    <div class="about-block">
+      <img src="foto.jpg" alt="Serwisant">
+      <div class="about-info">
+        <h2>O mnie</h2>
+        <p>Pomagamy szybko, rzetelnie i w uczciwej cenie. Naprawiamy laptopy, komputery stacjonarne, smartfony i tablety. Diagnoza wstępna jest bezpłatna – przed rozpoczęciem prac przedstawiamy jasną wycenę i uzgadniamy zakres naprawy.</p>
+        <h3>Co robimy:</h3>
+        <ul>
+          <li>💻 Systemy i oprogramowanie: instalacja/reinstalacja, sterowniki, konfiguracja Wi‑Fi</li>
+          <li>🦠 Usuwanie wirusów i optymalizacja działania, kopia i odzyskiwanie danych</li>
+          <li>🔧 Wymiana części: ekran/matryca, klawiatura, bateria, dysk SSD/HDD, RAM, gniazdo ładowania</li>
+          <li>🧼 Czyszczenie i konserwacja układu chłodzenia, wymiana past/termopadów</li>
+          <li>📱 Smartfony i tablety: wymiana wyświetlacza i portu ładowania, szkła ochronne</li>
+          <li>💧 Ratunek po zalaniu oraz naprawy po awariach zasilania</li>
+          <li>🧩 Modernizacje i składanie komputerów pod Twoje potrzeby</li>
+        </ul>
+        <h3>Jak pracujemy:</h3>
+        <button id="togglePhotosBtn">Zobacz zdjęcie</button>
+        <ul id="photoDropdown" style="display:none;">
+          <li>
+            <img src="Foto1.jpg" alt="Laptop przed konserwacją" />
+            <div>Laptop przed konserwacją</div>
+          </li>
+          <li>
+            <img src="Foto2.jpg" alt="Wymiana klawiatury w laptopie" />
+            <div>Wymiana klawiatury w laptopie</div>
+          </li>
+          <li>
+            <img src="Foto3.jpg" alt="Przyjęcie sprzętu do naprawy" />
+            <div>Przyjęcie sprzętu do naprawy</div>
+          </li>
+          <li>
+            <img src="Foto4.jpg" alt="Proces czyszczenia laptopa" />
+            <div>Proces czyszczenia laptopa</div>
+          </li>
+          <li>
+            <img src="Foto5.jpg" alt="Odblokowanie smartfonu Xiaomi" />
+            <div>Odblokowanie smartfonu Xiaomi</div>
+          </li>
+          <li>
+            <img src="Foto6.jpg" alt="Laptop po naprawie i czyszczeniu" />
+            <div>Laptop po naprawie i czyszczeniu</div>
+          </li>
+          <li>
+            <img src="Foto7.jpg" alt="Wyrwany zawias" />
+            <div>Wyrwany zawias</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="section">
+    <h2>Usługi</h2>
+    <details>
+      <summary>Pokaż wszystkie usługi</summary>
+      <ul>
+        <li>Diagnostyka – Bezpłatna</li>
+        <li>Naprawa po zalaniu – od 250 zł</li>
+        <li>Wymiana klawiatury w laptopie – od 140 zł</li>
+        <li>Naprawa zawiasów – od 60 zł</li>
+        <li>Wymiana ekranu w laptopie – od 130 zł</li>
+        <li>Naprawa MacBook – od 150 zł</li>
+        <li>Wymiana portu ładowania – od 60 zł</li>
+        <li>Wymiana pasty termoprzewodzącej – od 110 zł</li>
+        <li>Konserwacja laptopa – od 130 zł</li>
+        <li>Naprawa BIOS – od 90 zł</li>
+        <li>Składanie PC – od 120 zł</li>
+        <li>Naprawa CPU/GPU – od 290 zł</li>
+        <li>Naprawa/Wymiana ekranu w telefonie – od 100 zł</li>
+        <li>Naprawa mikrofonów/głośników – od 50 zł</li>
+        <li>Naprawa telefonu po zalaniu – od 150 zł</li>
+        <li>Naprawa portu ładowania – od 50 zł</li>
+        <li>Naprawa przycisków – od 40 zł</li>
+        <li>Naprawa tabletów – od 80 zł</li>
+        <li>Naprawa aparatów telefonu – od 80 zł</li>
+        <li>Wymiana baterii – od 100 zł</li>
+        <li>Aktualizacja oprogramowania – od 50 zł</li>
+        <li>Naprawa iPhone – od 80 zł</li>
+        <li>Wymiana baterii iPhone – od 120 zł</li>
+        <li>Czyszczenie głowicy drukarki – od 80 zł</li>
+        <li>Konsultacje IT – od 60 zł</li>
+        <li>Naprawa padów – od 90 zł</li>
+        <li>Naprawa Sony PS4 – od 90 zł</li>
+        <li>Naprawa Sony PS5 – od 130 zł</li>
+        <li>Naprawa Xbox – od 90 zł</li>
+        <li>Naprawa zasilaczy – od 80 zł</li>
+      </ul>
+    </details>
+  </section>
+
+  <section id="opinie" class="section">
+    <h2>Opinie</h2>
+    <p>Przez te linki możesz zobaczyć opinie na temat moich usług.</p>
+    <a href="https://fixly.pl/profil/twojserwisant" target="_blank" style="color: #254e70; font-weight: bold; text-decoration: underline;">na Fixly.pl</a>
+    <br />
+    <a href="https://www.google.com/maps/place/Serwis+komputerowy+Twój+Serwisant/@51.1206374,17.0393749,15z/data=!4m15!1m8!3m7!1s0x470fe9b50e75b4ff:0xe83c24387105acf4!2sSerwis+komputerowy+Twój+Serwisant!8m2!3d51.1206374!4d17.0393749!10e5!16s%2Fg%2F11xpb0jy7d!3m5!1s0x470fe9b50e75b4ff:0xe83c24387105acf4!8m2!3d51.1206374!4d17.0393749!16s%2Fg%2F11xpb0jy7d?entry=ttu&g_ep=EgoyMDI1MTExMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" style="color: #254e70; font-weight: bold; text-decoration: underline;"> na Google</a>
+  </section>
+
+  <section id="contact" class="section">
+    <h2>Kontakt</h2>
+    <form id="contactForm" class="contact-form" action="https://formspree.io/f/mvgdredp" method="POST" onsubmit="return handleSubmit(event)">
+      <div class="form-group">
+        <input type="text" name="name" placeholder="Imię i nazwisko" required />
+        <span class="tooltip">Wpisz swoje imię i nazwisko</span>
+      </div>
+      <div class="form-group">
+        <input type="email" name="_replyto" placeholder="Twój e-mail" required />
+        <span class="tooltip">Wpisz swój adres e-mail</span>
+      </div>
+      <div class="form-group">
+        <input type="tel" name="phone" placeholder="Numer telefonu" />
+        <span class="tooltip">Wpisz swój numer telefonu</span>
+      </div>
+      <div class="form-group">
+        <textarea name="message" placeholder="Twoja wiadomość" rows="5" required></textarea>
+        <span class="tooltip">Napisz swoją wiadomość</span>
+      </div>
+      <button type="submit">Wyślij</button>
+    </form>
+
+    <div id="thankModal" class="modal" style="display:none;">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <p>Dziękujemy za wiadomość!</p>
+      </div>
+    </div>
+  </section>
+
+  <div style="margin: 24px auto 0 auto; max-width: 450px;">
+    <iframe
+      src="https://www.google.com/maps?q=51.1206374,17.0393749&amp;z=16&amp;output=embed"
+      class="map"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Serwis komputerowy Twój Serwisant na mapie Google"
+    ></iframe>
+  </div>
+
+  <div style="margin: 22px auto; max-width: 410px; text-align: center;">
+    <a
+      href="https://www.google.com/maps/place/Serwis+komputerowy+Twój+Serwisant/@51.1207165,17.0383797,17z/data=!3m1!4b1!4m6!3m5!1s0x470fe9b50e75b4ff:0xe83c24387105acf4!8m2!3d51.1206374!4d17.0393749!16s%2Fg%2F11xpb0jy7d?entry=ttu"
+      target="_blank"
+      rel="noopener"
+      style="display:inline-block;padding:12px 22px;background:#254e70;color:#fff;border-radius:10px;font-size:1.12em;font-weight:bold;text-decoration:none;box-shadow:0 2px 10px rgba(37,78,112,0.07);transition:background 0.2s;">
+      Znajdź nas na Google Map
+    </a>
+  </div>
+
+  <footer>
+    <div>
+      <strong>Twój Serwisant</strong> – Profesjonalny serwis komputerowy, Wrocław
+      <div class="footer-contacts">
+        ul. Pobożnego 8/1A, tel:
+        <a href="tel:+48455510637" style="color:#ffd600;">+48 455 510 637</a>, email:
+        <a href="mailto:stanislaw.kmit@gmail.com" style="color:#ffd600;">stanislaw.kmit@gmail.com</a>
+      </div>
+      <hr style="border:none; border-bottom:1px solid #444; margin:13px 0;" />
+      <span>© 2025 Twój Serwisant</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("togglePhotosBtn").addEventListener("click", function () {
+      var list = document.getElementById("photoDropdown");
+      list.style.display =
+        list.style.display === "none" || list.style.display === "" ? "block" : "none";
+      if (list.style.display === "block") {
+        list.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+
+    function handleSubmit(event) {
+      event.preventDefault(); // Предотвратить стандартную отправку
+
+      const form = event.target;
+
+      fetch(form.action, {
+        method: form.method,
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
+      })
+        .then((response) => {
+          if (response.ok) {
+            showModal();
+            form.reset();
+          } else {
+            alert("Ups, coś poszło nie tak. Spróbuj ponownie.");
+          }
+        })
+        .catch(() => {
+          alert("Ups, coś poszło nie tak. Spróbuj ponownie.");
+        });
+
+      return false; // Дополнительная остановка перехода
+    }
+    function showModal() {
+      document.getElementById("thankModal").style.display = "block";
+    }
+    function closeModal() {
+      document.getElementById("thankModal").style.display = "none";
+    }
+  </script>
+</body>
+</html>
